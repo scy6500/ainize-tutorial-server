@@ -1,9 +1,9 @@
-FROM yeop2/gpt2-prideandprejudice
+FROM yeop2/gpt2-prideandprejudice:1
 
 WORKDIR /app
 
-RUN pip install torchserve
+RUN pip install flask transformers torch
 
-RUN cd GPT2-PrideAndPrejudice
+COPY . .
 
-CMD ["torchserve", "--start", "--ncs", "--model-store=./", "--models=gpt2-prideandprejudice.mar"]
+CMD ["python3", "main.py"]
