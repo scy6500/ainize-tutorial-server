@@ -11,14 +11,18 @@ device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 model.to(device)
 
 
-def make_story(base_text):
+def make_story(base_text, length):
     try:
         # Encoding of input text
         input_ids = tokenizer.encode(base_text, return_tensors='pt')
         # Both input and model must use the same device (cpu or gpu)
         input_ids = input_ids.to(device)
         # Generate prediction
-        outputs = model.generate(input_ids, max_length=300)
+        outputs = model.generate(input_ids, pad_token_id=50256,
+                                 do_sample=True,
+                                 max_length=length,
+                                 top_k=40,
+                                 num_return_sequences=1)
         result = dict()
         result["prediction"] = tokenizer.decode(outputs[0], skip_special_tokens=True)
         return jsonify(result)
@@ -32,11 +36,12 @@ def make_story(base_text):
 def main():
     try:
         base_text = request.form.get('base_text')
+        length = int(request.form.get('length'))
 
     except Exception as e:
         return jsonify({'message': 'Invalid request'}), 500
 
-    prediction = make_story(base_text)
+    prediction = make_story(base_text, length)
 
     return prediction
 
