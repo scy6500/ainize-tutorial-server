@@ -16,7 +16,8 @@ Fine tuning data: [Project Gutenburg](http://www.gutenberg.org/ebooks/1342)
 
 ### Post parameter
 
-    text: The base of Pride and Prejudice fiction.
+    base_text: The base of Pride and Prejudice fiction. 
+    length: The length of the text
 
 
 ### Output format
@@ -29,7 +30,7 @@ Fine tuning data: [Project Gutenburg](http://www.gutenberg.org/ebooks/1342)
 ### Input example
 
 
-    curl -X POST "https://main-ainize-tutorial-server-scy6500.endpoint.ainize.ai" -H "accept: application/json" -H "Content-Type: multipart/form-data" -F "base_text= Mr. Darcy was nice and danced only once with Elizabeth."
+    curl -X POST "https://main-ainize-tutorial-server-scy6500.endpoint.ainize.ai/predict" -H "accept: application/json" -H "Content-Type: multipart/form-data" -F "base_text=one day" -F "length=100"
     
 
 ### Output example
