@@ -10,9 +10,13 @@ Fine tuning data: [Project Gutenburg](http://www.gutenberg.org/ebooks/1342)
 
 ### How to use
 
-    * First, Fill what the base text. This will be base of Pride and Prejudice fiction.
-    * And then, Fill number in length. Text is created as long as "length". I recommend between 100 and 300.
-    * If length is so big, generate time will be long.
+    git clone https://github.com/scy6500/ainize-tutorial-server.git  
+
+    cd ainize-tutorial-server  
+
+    docker build --tag {project-name}:{tag} . 
+
+    docker run -p 5000:5000 {project-name}:{tag} 
 
 ### Post parameter
 
