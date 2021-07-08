@@ -23,23 +23,18 @@ paths:
         required: true
         description: |
           This request will generate Pride and Prejudice fiction.
-          curl example
-              curl -X POST "https://main-ainize-tutorial-server-scy6500.endpoint.ainize.ai/predict"
-              -H "accept: application/json" -H "Content-Type: multipart/form-data" -F "base_text=one day" -F "length=100"
         content:
           multipart/form-data:
             schema:
               type: object
               properties:
                 base_text:
-                  type: string
                   description: "Your Pride and Prejudice fiction base."
-                legnth:
-                  type: string
+                length:
                   description: "The length of the text"
               required:
-                - text
-                - legnth
+                - base_text
+                - length
       responses:
         '200':
           description: "Successful Response"
