@@ -6,4 +6,4 @@ RUN pip install flask transformers torch
 
 COPY . .
 
-CMD ["python3", "main.py"]
+CMD ["python3", "app.py"]
